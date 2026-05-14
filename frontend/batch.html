@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>批量下载 - 万能视频下载</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/css/style.css?v=3" />
+</head>
+<body>
+  <header class="top-nav">
+    <nav class="top-nav-left">
+      <a href="/">单视频下载</a>
+      <a href="/batch.html" class="active">批量下载</a>
+      <a href="#" data-vip="ai">AI 视频总结</a>
+      <a href="#" data-vip="subtitle">字幕翻译</a>
+      <a href="#help">使用帮助</a>
+    </nav>
+    <div class="top-nav-right">
+      <span class="trust-badge">已服务 <b>1,287,463</b> 位用户</span>
+      <button type="button" class="btn-vip-pill" id="topVipBtn">
+        <span class="crown"></span>升级 VIP
+      </button>
+    </div>
+  </header>
+
+  <main class="hero hero-batch">
+    <div class="logo">
+      <span class="logo-text-red">批量</span><span class="logo-arrow">↓</span><span class="logo-text-red">下载</span>
+      <div class="logo-tagline">一次粘贴，全部下载</div>
+    </div>
+
+    <div class="batch-card">
+      <div class="batch-header">
+        <h2>粘贴多条视频链接（每行一条）</h2>
+        <span class="batch-quota" id="batchQuota">免费版限 <b>3</b> 条 / 次，VIP 无限</span>
+      </div>
+      <textarea
+        id="batchUrls"
+        class="batch-input"
+        placeholder="https://www.youtube.com/watch?v=xxxxx&#10;https://www.bilibili.com/video/BVxxxxx&#10;https://...&#10;..."
+        spellcheck="false"
+      ></textarea>
+      <div class="batch-actions">
+        <div class="batch-stat">
+          已输入 <b id="batchCount">0</b> 条
+          <span id="batchOverHint" class="over-hint" hidden>· 超出免费额度，需开通 VIP</span>
+        </div>
+        <button type="button" class="search-btn" id="batchBtn">开始批量解析</button>
+      </div>
+    </div>
+  </main>
+
+  <section class="result" id="result" hidden>
+    <div class="result-loading" id="resultLoading" hidden>
+      <div class="spinner"></div>
+      <p>正在批量解析中，每条视频约需 2-5 秒...</p>
+    </div>
+    <ul class="batch-results" id="batchResults"></ul>
+  </section>
+
+  <footer class="foot">
+    <div class="foot-links">
+      <a href="#">关于我们</a>
+      <a href="#">用户协议</a>
+      <a href="#">隐私政策</a>
+      <a href="#">联系客服</a>
+    </div>
+    <p class="foot-tip">本站仅供学习交流，请尊重原创、遵守平台条款。</p>
+    <p class="foot-copy">© 2026 万能视频下载</p>
+  </footer>
+
+  <div class="modal" id="payModal" hidden>
+    <div class="modal-mask" data-close></div>
+    <div class="modal-body">
+      <button class="modal-close" data-close aria-label="关闭">×</button>
+      <div class="pay-header">
+        <span class="crown big"></span>
+        <h2>开通 VIP，解锁全部能力</h2>
+        <p id="payReason">该功能为 VIP 专享</p>
+      </div>
+      <ul class="pay-features">
+        <li>4K / 8K 原画无损下载</li>
+        <li>无限批量下载（100 条/次）</li>
+        <li>AI 视频内容总结（GPT-4 驱动）</li>
+        <li>字幕翻译 50+ 语言互译</li>
+        <li>专属客服 1v1 响应</li>
+        <li>去除所有广告与频率限制</li>
+      </ul>
+      <div class="pay-plans">
+        <label class="plan">
+          <input type="radio" name="plan" value="month" />
+          <div class="plan-card">
+            <div class="plan-name">月卡</div>
+            <div class="plan-price"><b>29.9</b><small>元/月</small></div>
+          </div>
+        </label>
+        <label class="plan recommended">
+          <input type="radio" name="plan" value="year" checked />
+          <div class="plan-card">
+            <div class="plan-badge">推荐 立省 70%</div>
+            <div class="plan-name">年卡</div>
+            <div class="plan-price"><b>108</b><small>元/年</small></div>
+            <div class="plan-tip">折合 9 元 / 月</div>
+          </div>
+        </label>
+        <label class="plan">
+          <input type="radio" name="plan" value="forever" />
+          <div class="plan-card">
+            <div class="plan-name">终身</div>
+            <div class="plan-price"><b>298</b><small>元</small></div>
+          </div>
+        </label>
+      </div>
+      <button class="btn-pay" id="payBtn">立即开通</button>
+      <p class="pay-tip">支持微信 / 支付宝 · 即开即用 · 7 天无理由退款</p>
+    </div>
+  </div>
+
+  <script src="/js/batch.js?v=3"></script>
+</body>
+</html>

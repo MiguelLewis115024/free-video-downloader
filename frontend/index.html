@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>万能视频下载，一下你就知道</title>
+  <meta name="description" content="粘贴链接，秒下 YouTube / B站 / 抖音 / Twitter / Instagram 等 1000+ 平台视频。4K / 8K / 批量下载 / AI 总结 / 字幕翻译 一站搞定。" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="stylesheet" href="/css/style.css?v=3" />
+</head>
+<body>
+  <header class="top-nav">
+    <nav class="top-nav-left">
+      <a href="/" class="active">单视频下载</a>
+      <a href="/batch.html">批量下载</a>
+      <a href="#" data-vip="ai">AI 视频总结</a>
+      <a href="#" data-vip="subtitle">字幕翻译</a>
+      <a href="#help">使用帮助</a>
+    </nav>
+    <div class="top-nav-right">
+      <span class="trust-badge">已服务 <b id="userCount">1,287,463</b> 位用户</span>
+      <button type="button" class="btn-vip-pill" id="topVipBtn">
+        <span class="crown"></span>升级 VIP
+      </button>
+    </div>
+  </header>
+
+  <main class="hero">
+    <div class="logo">
+      <span class="logo-text-red">万能</span><span class="logo-arrow">↓</span><span class="logo-text-red">下载</span>
+      <div class="logo-tagline">一下你就知道</div>
+    </div>
+
+    <form class="search-wrap" id="parseForm" autocomplete="off">
+      <input
+        type="url"
+        class="search-input"
+        id="urlInput"
+        placeholder="粘贴 YouTube / B站 / 抖音 / Twitter / Instagram 视频链接..."
+        required
+        spellcheck="false"
+        inputmode="url"
+      />
+      <button type="submit" class="search-btn" id="parseBtn">立即下载</button>
+    </form>
+
+    <div class="quick-tags">
+      <span class="tag-label">支持：</span>
+      <span class="tag">YouTube</span>
+      <span class="tag">B 站</span>
+      <span class="tag">抖音</span>
+      <span class="tag">快手</span>
+      <span class="tag">小红书</span>
+      <span class="tag">Twitter / X</span>
+      <span class="tag">Instagram</span>
+      <span class="tag">TikTok</span>
+      <span class="tag muted">+ 还有 1000 个</span>
+    </div>
+
+    <div class="hero-promo" id="heroPromo">
+      <div class="promo-card">
+        <div class="promo-icon">4K</div>
+        <div class="promo-text">
+          <h3>原画 4K / 8K 下载</h3>
+          <p>VIP 专享，画质拉满</p>
+        </div>
+      </div>
+      <div class="promo-card">
+        <div class="promo-icon">∞</div>
+        <div class="promo-text">
+          <h3>无限批量下载</h3>
+          <p>一次粘贴 100 条链接</p>
+        </div>
+      </div>
+      <div class="promo-card">
+        <div class="promo-icon">AI</div>
+        <div class="promo-text">
+          <h3>AI 视频总结</h3>
+          <p>10 秒读完 1 小时视频</p>
+        </div>
+      </div>
+      <div class="promo-card">
+        <div class="promo-icon">译</div>
+        <div class="promo-text">
+          <h3>字幕一键翻译</h3>
+          <p>50+ 语言互译</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <section class="result" id="result" hidden>
+    <div class="result-loading" id="resultLoading" hidden>
+      <div class="spinner"></div>
+      <p>正在为你飞速解析视频...</p>
+    </div>
+
+    <div class="result-error" id="resultError" hidden></div>
+
+    <article class="video-card" id="videoCard" hidden>
+      <div class="video-cover">
+        <img id="videoThumb" alt="视频封面" />
+        <span class="video-duration" id="videoDuration"></span>
+      </div>
+      <div class="video-meta">
+        <h2 id="videoTitle"></h2>
+        <p class="video-sub">
+          <span id="videoUploader"></span>
+          <span class="dot">·</span>
+          <span id="videoSource"></span>
+        </p>
+        <div class="video-ai-row">
+          <button type="button" class="btn-ai" data-vip="ai">
+            <span class="crown"></span>AI 一键总结视频内容
+          </button>
+          <button type="button" class="btn-ai" data-vip="subtitle">
+            <span class="crown"></span>字幕翻译为中/英文
+          </button>
+        </div>
+
+        <h3 class="formats-title">选择清晰度与格式</h3>
+        <ul class="formats" id="formats"></ul>
+      </div>
+    </article>
+  </section>
+
+  <section class="trust" id="help">
+    <div class="trust-stat">
+      <div class="num">1000<span class="plus">+</span></div>
+      <div class="label">支持平台</div>
+    </div>
+    <div class="trust-stat">
+      <div class="num">128<span class="plus">万+</span></div>
+      <div class="label">累计用户</div>
+    </div>
+    <div class="trust-stat">
+      <div class="num">99.9<span class="plus">%</span></div>
+      <div class="label">解析成功率</div>
+    </div>
+    <div class="trust-stat">
+      <div class="num">0<span class="plus">秒</span></div>
+      <div class="label">无需注册</div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <div class="foot-links">
+      <a href="#">关于我们</a>
+      <a href="#">用户协议</a>
+      <a href="#">隐私政策</a>
+      <a href="#">联系客服</a>
+      <a href="#">商务合作</a>
+    </div>
+    <p class="foot-tip">本站仅供学习交流，请尊重原创、遵守平台条款，请勿用于商业用途。</p>
+    <p class="foot-copy">© 2026 万能视频下载</p>
+  </footer>
+
+  <!-- VIP / Pay modal -->
+  <div class="modal" id="payModal" hidden>
+    <div class="modal-mask" data-close></div>
+    <div class="modal-body">
+      <button class="modal-close" data-close aria-label="关闭">×</button>
+      <div class="pay-header">
+        <span class="crown big"></span>
+        <h2>开通 VIP，解锁全部能力</h2>
+        <p id="payReason">该功能为 VIP 专享</p>
+      </div>
+      <ul class="pay-features">
+        <li>4K / 8K 原画无损下载</li>
+        <li>无限批量下载（100 条/次）</li>
+        <li>AI 视频内容总结（GPT-4 驱动）</li>
+        <li>字幕翻译 50+ 语言互译</li>
+        <li>专属客服 1v1 响应</li>
+        <li>去除所有广告与频率限制</li>
+      </ul>
+      <div class="pay-plans">
+        <label class="plan">
+          <input type="radio" name="plan" value="month" />
+          <div class="plan-card">
+            <div class="plan-name">月卡</div>
+            <div class="plan-price"><b>29.9</b><small>元/月</small></div>
+          </div>
+        </label>
+        <label class="plan recommended">
+          <input type="radio" name="plan" value="year" checked />
+          <div class="plan-card">
+            <div class="plan-badge">推荐 立省 70%</div>
+            <div class="plan-name">年卡</div>
+            <div class="plan-price"><b>108</b><small>元/年</small></div>
+            <div class="plan-tip">折合 9 元 / 月</div>
+          </div>
+        </label>
+        <label class="plan">
+          <input type="radio" name="plan" value="forever" />
+          <div class="plan-card">
+            <div class="plan-name">终身</div>
+            <div class="plan-price"><b>298</b><small>元</small></div>
+          </div>
+        </label>
+      </div>
+      <button class="btn-pay" id="payBtn">立即开通</button>
+      <p class="pay-tip">支持微信 / 支付宝 · 即开即用 · 7 天无理由退款</p>
+    </div>
+  </div>
+
+  <script src="/js/main.js?v=3"></script>
+</body>
+</html>
